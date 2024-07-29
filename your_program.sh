@@ -14,6 +14,7 @@ set -e # Exit early if any commands fail
 # - Edit .codecrafters/compile.sh to change how your program compiles remotely
 (
   cd "$(dirname "$0")" # Ensure compile steps are run within the repository directory
+  echo "Compiling Go program..."
   go build -o /tmp/codecrafters-build-http-server-go app/*.go
 )
 
@@ -21,4 +22,6 @@ set -e # Exit early if any commands fail
 #
 # - Edit this to change how your program runs locally
 # - Edit .codecrafters/run.sh to change how your program runs remotely
+echo "Running the program..."
 exec /tmp/codecrafters-build-http-server-go "$@"
+echo "Script finished"
